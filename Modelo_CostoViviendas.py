@@ -115,35 +115,3 @@ joblib.dump(scaler, ruta_guardado / "scaler_X.pkl")
 joblib.dump(y_scaler, ruta_guardado / "scaler_y.pkl")
 
 print("Modelo y escaladores guardados con éxito en", ruta_guardado.resolve())
-
-
-"""
-# ---------------------- PREDICCIÓN PERSONALIZADA------------------
-
-print("\n--- Predicción personalizada ---")
-try:
-    print("Por favor, ingresa los datos de la casa:")
-
-    lot_area = float(input("Área del terreno (Lot Area): "))
-    garage_area = float(input("Área del garaje (Garage Area): "))
-    garage_cars = float(input("Número de autos en garaje (Garage Cars): "))
-    year_built = int(input("Año de construcción (Year Built): "))
-    overall_qual = int(input("Calidad general de la casa (Overall Qual): "))
-    gr_liv_area = float(input("Área habitable sobre suelo (Gr Liv Area): "))
-    total_bsmt_sf = float(input("Área total del sótano (Total Bsmt SF): "))
-    first_flr_sf = float(input("Área del primer piso (1st Flr SF): "))
-
-    nueva_casa = np.array([[lot_area, garage_area, garage_cars, year_built,
-                            overall_qual, gr_liv_area, total_bsmt_sf, first_flr_sf]])
-
-    nueva_casa_scaled = scaler.transform(nueva_casa)
-
-    # Predecir y desescalar
-    pred_scaled = modelo.predict(nueva_casa_scaled)
-    pred_real = y_scaler.inverse_transform(pred_scaled)
-
-    print(f"\n✅ Precio estimado: ${pred_real[0][0]:,.2f}")
-
-except Exception as e:
-    print("⚠️ Error al ingresar los datos:", e)
-"""
